@@ -1,11 +1,19 @@
 
 ---
 
-  - name: Upgrading all packages
-    zypper:
-      name: '*'
-      state: dist-upgrade
-      update_cache: yes
+  #- name: Upgrading all packages
+  #  zypper:
+  #    name: '*'
+  #    state: dist-upgrade
+  #    update_cache: yes
+  #  when: ansible_distribution == "openSUSE Tumbleweed"
+
+  - name: Refreshing zypper cache
+    shell: zypper refresh
+    when: ansible_distribution == "openSUSE Tumbleweed"
+
+  - name: Upgrading the Linux system packages
+    shell: zypper dist-upgrade -l -y
     when: ansible_distribution == "openSUSE Tumbleweed"
 
   - name: Cleaning up zypper cache
