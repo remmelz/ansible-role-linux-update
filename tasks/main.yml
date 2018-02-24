@@ -1,0 +1,6 @@
+
+---
+
+  - import_tasks: "upgrade.yml"
+  - import_tasks: "reboot.yml"
+

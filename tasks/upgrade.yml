@@ -1,0 +1,11 @@
+
+---
+
+  - name: Upgrading all packages
+    zypper: name=* state=dist-upgrade
+    when: ansible_distribution == "openSUSE Tumbleweed"
+
+  - name: Cleaning up zypper cache
+    shell: zypper clean -a
+    when: ansible_distribution == "openSUSE Tumbleweed"
+

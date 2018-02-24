@@ -1,0 +1,9 @@
+
+---
+
+  - name: Rebooting the server
+    shell: sleep 2 && shutdown -r now "Ansible reboot"
+    ignore_errors: true
+    async: 1
+    poll: 0
+
