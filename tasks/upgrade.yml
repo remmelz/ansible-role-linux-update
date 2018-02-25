@@ -15,6 +15,7 @@
   - name: Upgrading the Linux system packages
     shell: zypper dist-upgrade -l -y
     when: ansible_distribution == "openSUSE Tumbleweed"
+    register: upgrade
 
   - name: Cleaning up zypper cache
     shell: zypper clean -a
