@@ -1,0 +1,10 @@
+
+---
+
+  - name: Upgrading the Linux system packages
+    shell: zypper dist-upgrade -l -y
+    register: upgrade
+
+  - name: Cleaning up zypper cache
+    shell: zypper clean -a
+

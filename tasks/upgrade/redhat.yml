@@ -1,0 +1,13 @@
+
+---
+
+  - name: Upgrading the Linux system packages
+    yum:
+      name: '*'
+      state: latest
+      update_cache: yes
+    register: upgrade
+
+  - name: Cleaning up YUM cache
+    shell: yum clean all
+

@@ -6,5 +6,5 @@
     ignore_errors: true
     async: 1
     poll: 0
-    when: '"Nothing to do" not in upgrade.stdout'
+    when: upgrade.rc == 0
 
