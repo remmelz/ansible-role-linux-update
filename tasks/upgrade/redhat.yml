@@ -11,3 +11,10 @@
   - name: Cleaning up YUM cache
     shell: yum clean all
 
+  - name: Rebooting the server
+    shell: sleep 2 && shutdown -r now "Ansible reboot"
+    ignore_errors: true
+    async: 1
+    poll: 0
+    when: upgrade.rc == 0
+
