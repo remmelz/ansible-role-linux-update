@@ -1,0 +1,17 @@
+
+---
+
+  - name: Copying snapper delete script
+    copy:
+      src: ./files/snapdel.sh
+      dest: /var/tmp/snapdel.sh
+      mode: 0755
+    tags: snapdel
+
+  - name: Executing the snapper delete script
+    shell: /var/tmp/snapdel.sh
+    register: result
+    failed_when: ( result.rc not in [ 0, 1 ] )
+    ignore_errors: yes
+    tags: snapdel
+

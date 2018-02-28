@@ -7,9 +7,11 @@
       state: latest
       update_cache: yes
     register: upgrade
+    tags: upgrade
 
   - name: Cleaning up YUM cache
     shell: yum clean all
+    tags: upgrade
 
   - name: Rebooting the server
     shell: sleep 2 && shutdown -r now "Ansible reboot"
@@ -17,4 +19,5 @@
     async: 1
     poll: 0
     when: upgrade.rc == 0
+    tags: upgrade
 

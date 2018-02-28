@@ -2,11 +2,13 @@
 ---
 
   - name: Upgrade the OpenSUSE Linux systems
-    import_tasks: ./upgrade/suse.yml
+    block:
+      - import_tasks: ./suse/snapdel.yml
+      - import_tasks: ./suse/upgrade.yml
     when: ansible_os_family|lower == 'suse'
 
   - name: Upgrade the RedHat Linux systems
-    import_tasks: ./upgrade/redhat.yml
+    import_tasks: ./redhat/upgrade.yml
     when: ansible_os_family|lower == 'redhat'
 
 

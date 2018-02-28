@@ -4,9 +4,11 @@
   - name: Upgrading the Linux system packages
     shell: zypper dist-upgrade -l -y
     register: upgrade
+    tags: upgrade
 
   - name: Cleaning up zypper cache
     shell: zypper clean -a
+    tags: upgrade
 
   - name: Rebooting the server
     shell: sleep 2 && shutdown -r now "Ansible reboot"
@@ -14,4 +16,5 @@
     async: 1
     poll: 0
     when: upgrade.rc == 0
+    tags: upgrade
 
