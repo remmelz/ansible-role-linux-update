@@ -1,7 +1,7 @@
 
 
 - name: Upgrading Linux OS
-  hosts: linux-hosts
+  hosts: all
 
   roles:
     - ansible-role-linux-upgrade

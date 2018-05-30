@@ -1,14 +1,20 @@
 
 ---
 
-  - name: Upgrade the OpenSUSE Linux systems
+  - name: Upgrade OpenSUSE Tumbleweed
     block:
-      - import_tasks: ./suse/snapdel.yml
-      - import_tasks: ./suse/upgrade.yml
-    when: ansible_os_family|lower == 'suse'
+      - import_tasks: ./susetw/snapdel.yml
+      - import_tasks: ./susetw/upgrade.yml
+    when: ansible_distribution == 'openSUSE Tumbleweed'
 
-  - name: Upgrade the RedHat Linux systems
-    import_tasks: ./redhat/upgrade.yml
+  - name: Upgrade OpenSUSE Leap
+    block:
+      - import_tasks: ./suseleap/snapdel.yml
+      - import_tasks: ./suseleap/update.yml
+    when: ansible_distribution == 'openSUSE Leap'
+
+  - name: Upgrade RedHat 
+    import_tasks: ./redhat/update.yml
     when: ansible_os_family|lower == 'redhat'
 
 

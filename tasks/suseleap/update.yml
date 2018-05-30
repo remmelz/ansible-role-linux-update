@@ -1,19 +1,16 @@
 
 ---
 
-  - name: Upgrading the Linux system packages
-    yum:
-      name: '*'
-      state: latest
-      update_cache: yes
+  - name: Updating system packages
+    shell: zypper update -l -y
     register: upgrade
     tags: upgrade
 
-  - name: Cleaning up YUM cache
-    shell: yum clean all
+  - name: Cleaning up zypper cache
+    shell: zypper clean -a
     tags: upgrade
 
-  - name: Rebooting the server
+  - name: Rebooting
     shell: sleep 2 && shutdown -r now "Ansible reboot"
     ignore_errors: true
     async: 1
